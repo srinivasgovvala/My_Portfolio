@@ -1,0 +1,371 @@
+{% extends 'base.html' %}
+{% load static portfolio_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ====== HERO ====== -->
+<section id="home" class="hero-section">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero-content container">
+    <div class="hero-hud reveal">
+      <span class="hero-hud-dot"></span>
+      <span class="text-mono" style="font-size:0.65rem;letter-spacing:0.18em;color:var(--purple-400);">SYSTEM ONLINE · NAGASRINIVAS.GOVVALA · SOFTWARE DEVELOPER</span>
+    </div>
+
+    <h1 class="hero-name" id="hero-name" aria-label="Nagasrinivas Govvala"></h1>
+
+    <div class="hero-role-wrap" aria-live="polite">
+      <span class="hero-role-prefix text-mono" style="color:var(--text-muted);font-size:1rem;">// </span>
+      <span class="hero-role" id="hero-role" aria-label="Current role"></span>
+      <span class="hero-cursor" aria-hidden="true">|</span>
+    </div>
+
+    <p class="hero-tagline reveal reveal-delay-2">
+      Building practical software with Python, Django, AI and modern web technologies.
+    </p>
+
+    <div class="hero-cta reveal reveal-delay-3">
+      <a href="#projects" class="btn btn-primary">Explore My Work</a>
+      {% if profile.resume %}
+      <a href="{{ profile.resume.url }}" class="btn btn-outline" download aria-label="Download resume PDF">Download Resume</a>
+      {% endif %}
+    </div>
+
+    <div class="hero-links reveal reveal-delay-4">
+      {% if github_url %}<a href="{{ github_url }}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub">GitHub</a>{% endif %}
+      {% if linkedin_url %}<a href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn">LinkedIn</a>{% endif %}
+      {% if contact_email %}<a href="mailto:{{ contact_email }}" class="hero-social-link" aria-label="Email">Email</a>{% endif %}
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+    <span class="scroll-line"></span>
+    <span class="text-mono" style="font-size:0.6rem;letter-spacing:0.15em;color:var(--text-muted);">SCROLL</span>
+  </a>
+</section>
+
+
+<!-- ====== ABOUT ====== -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">01 — Identity</span>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="separator"></div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem;">
+          I'm <strong style="color:var(--text-primary);">Nagasrinivas Govvala</strong> — a fresher looking for software developer role from Hyderabad, Telangana. I graduated with a B.Tech in Computer Science and Engineering in 2025.
+        </p>
+        <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem;">
+          My development journey has been defined not by years in industry, but by shipping real applications that solve actual problems. I build with <strong style="color:var(--purple-300);">Python and Django</strong> as my primary stack, experiment with machine learning and NLP, and create production-oriented websites.
+        </p>
+        <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;">
+          I use modern AI-assisted development workflows as collaborative tools. My approach: <em style="color:var(--purple-300);">"Build and learn by shipping real projects."</em>
+        </p>
+        {% if profile.available_for_work %}
+        <div style="margin-top:1.5rem;">
+          <span class="status-live">Available for opportunities</span>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="about-stats reveal reveal-delay-2">
+        <div class="stat-card glass-card" style="padding:1.5rem;text-align:center;">
+          <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--purple-400);margin-bottom:0.5rem;">2025</div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;">B.Tech Graduate</div>
+        </div>
+        <div class="stat-card glass-card" style="padding:1.5rem;text-align:center;">
+          <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--purple-400);margin-bottom:0.5rem;">3+</div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;">Major Projects</div>
+        </div>
+        <div class="stat-card glass-card" style="padding:1.5rem;text-align:center;">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--purple-400);margin-bottom:0.5rem;">Python</div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;">Primary Language</div>
+        </div>
+        <div class="stat-card glass-card" style="padding:1.5rem;text-align:center;">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--purple-400);margin-bottom:0.5rem;">AI / ML</div>
+          <div style="font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;">Development Focus</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== SKILLS ====== -->
+<section id="skills" style="background:rgba(10,10,18,0.5);">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">02 — Technology</span>
+      <h2 class="section-title">Technology System</h2>
+      <div class="separator"></div>
+      <p class="text-muted" style="max-width:500px;">The tools I build with, organized by domain.</p>
+    </div>
+
+    <div class="skills-grid reveal">
+      {% regroup technologies by get_category_display as tech_categories %}
+      {% for category in tech_categories %}
+      <div class="skill-category glass-card" style="padding:1.5rem;">
+        <h3 style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple-400);margin-bottom:1rem;">{{ category.grouper }}</h3>
+        <div class="tech-nodes">
+          {% for tech in category.list %}
+          <div class="tech-node" data-name="{{ tech.name }}" data-desc="{{ tech.description }}" data-project="{{ tech.related_project }}" tabindex="0" role="button" aria-label="{{ tech.name }}">
+            <span class="tech-node-icon">{% tech_logo tech.name tech.color 20 %}</span>
+            <span class="tech-node-name">{{ tech.name }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Tech tooltip -->
+    <div id="tech-tooltip" class="tech-tooltip" aria-live="polite" hidden>
+      <div class="tech-tooltip-name" id="tooltip-name"></div>
+      <div class="tech-tooltip-desc" id="tooltip-desc"></div>
+      <div class="tech-tooltip-project" id="tooltip-project"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== PROJECTS ====== -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">03 — Work</span>
+      <h2 class="section-title">Projects I Actually Built</h2>
+      <div class="separator"></div>
+    </div>
+
+    <div class="projects-grid">
+      {% for project in featured_projects %}
+      <article class="project-card glass-card reveal" data-delay="{{ forloop.counter0 }}" data-url="{% url 'projects:detail' project.slug %}" tabindex="0" role="link" aria-label="View {{ project.title }} case study">
+        <div class="project-media">
+          {% if project.thumbnail %}
+          <img
+            class="project-thumbnail"
+            src="{{ project.thumbnail.url }}"
+            alt="{{ project.title }} screenshot"
+            loading="lazy"
+          >
+          {% endif %}
+          {% if project.hover_gif %}
+          <img
+            class="project-gif"
+            data-src="{{ project.hover_gif.url }}"
+            alt="{{ project.title }} preview animation"
+            loading="lazy"
+            aria-hidden="true"
+          >
+          {% endif %}
+          <div class="project-overlay">
+            <span class="btn btn-primary" style="font-size:0.8rem;padding:0.5rem 1.15rem;pointer-events:none;">View Case Study →</span>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap;">
+            <span class="status-live">{{ project.category }}</span>
+            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);">
+              {% if project.is_completed %}COMPLETED{% endif %}
+            </span>
+          </div>
+          <h3 style="font-size:1.3rem;margin-bottom:0.5rem;">{{ project.title }}</h3>
+          <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.6;margin-bottom:1rem;">{{ project.short_description }}</p>
+
+          <div class="tech-badges" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem;">
+            {% for tech in project.technologies.all|slice:":6" %}
+            <span class="tech-badge">{{ tech.name }}</span>
+            {% endfor %}
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="font-size:0.75rem;padding:0.4rem 0.9rem;" aria-label="{{ project.title }} GitHub">GitHub</a>
+            {% endif %}
+            {% if project.live_url %}
+            <a href="{{ project.live_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:0.75rem;padding:0.4rem 0.9rem;" aria-label="{{ project.title }} live demo">Live Demo</a>
+            {% endif %}
+            <a href="{% url 'projects:detail' project.slug %}" class="btn btn-ghost" style="font-size:0.75rem;padding:0.4rem 0.9rem;" aria-label="{{ project.title }} case study">Case Study →</a>
+          </div>
+        </div>
+      </article>
+      {% empty %}
+      <p class="text-muted">Projects coming soon.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== FUTURE PROJECTS ====== -->
+{% if future_projects %}
+<section id="future" style="background:rgba(10,10,18,0.5);">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">04 — Next</span>
+      <h2 class="section-title">Projects in Development</h2>
+      <div class="separator"></div>
+      <p class="text-muted">What I'm building next. Not completed — in progress.</p>
+    </div>
+
+    <div class="future-grid">
+      {% for fp in future_projects %}
+      <article class="future-card glass-card reveal" data-delay="{{ forloop.counter0 }}">
+        {% if fp.thumbnail %}
+        <div class="future-card-img">
+          <img src="{{ fp.thumbnail.url }}" alt="{{ fp.title }}" loading="lazy">
+          <div class="future-card-overlay"></div>
+        </div>
+        {% else %}
+        <div class="future-card-placeholder">
+          <div class="future-placeholder-icon">◈</div>
+        </div>
+        {% endif %}
+
+        <div class="future-card-body">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap;">
+            <span class="status-dev">{{ fp.get_status_display }}</span>
+            <span style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:0.1em;">IN DEVELOPMENT</span>
+          </div>
+          <h3 style="font-size:1.1rem;margin-bottom:0.4rem;">{{ fp.title }}</h3>
+          <p style="color:var(--purple-300);font-size:0.85rem;margin-bottom:0.75rem;font-style:italic;">{{ fp.concept }}</p>
+          <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.6;margin-bottom:1rem;">{{ fp.description|truncatechars:120 }}</p>
+
+          {% if fp.technologies_planned %}
+          <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem;">
+            {% for tech in fp.get_technologies_list %}
+            <span class="tech-badge" style="opacity:0.6;">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <a href="{% url 'projects:future_detail' fp.slug %}" class="btn btn-outline" style="font-size:0.75rem;padding:0.4rem 0.9rem;">Explore Concept →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ====== EDUCATION ====== -->
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">05 — Background</span>
+      <h2 class="section-title">Education</h2>
+      <div class="separator"></div>
+    </div>
+
+    <div class="education-timeline">
+      {% for edu in educations %}
+      <div class="edu-node reveal" data-delay="{{ forloop.counter0 }}">
+        <div class="edu-connector" aria-hidden="true">
+          <div class="edu-dot"></div>
+          {% if not forloop.last %}<div class="edu-line"></div>{% endif %}
+        </div>
+        <div class="edu-card glass-card hud-corner">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <span class="section-label" style="font-size:0.65rem;">{{ edu.year }}</span>
+            <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--purple-400);">{{ edu.grade }}</span>
+          </div>
+          <h3 style="font-size:1.1rem;margin-bottom:0.25rem;">{{ edu.degree }}</h3>
+          <p style="color:var(--purple-300);font-size:0.9rem;margin-bottom:0.25rem;">{{ edu.field }}</p>
+          <p style="color:var(--text-secondary);font-size:0.875rem;">{{ edu.institution }}</p>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Experience entries -->
+      {% for exp in experiences %}
+      <div class="edu-node reveal" data-delay="{{ forloop.counter }}">
+        <div class="edu-connector" aria-hidden="true">
+          <div class="edu-dot" style="background:var(--neon-cyan);box-shadow:0 0 8px var(--neon-cyan);"></div>
+          {% if not forloop.last %}<div class="edu-line"></div>{% endif %}
+        </div>
+        <div class="edu-card glass-card hud-corner">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <span class="section-label" style="font-size:0.65rem;color:var(--neon-cyan);">{{ exp.get_exp_type_display }}</span>
+            <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);">
+              {{ exp.start_date.year }}{% if exp.is_current %} — Present{% elif exp.end_date %} — {{ exp.end_date.year }}{% endif %}
+            </span>
+          </div>
+          <h3 style="font-size:1.1rem;margin-bottom:0.25rem;">{{ exp.title }}</h3>
+          <p style="color:var(--neon-cyan);font-size:0.9rem;margin-bottom:0.5rem;">{{ exp.organization }}</p>
+          <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.6;">{{ exp.description|truncatechars:200 }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== CONTACT ====== -->
+<section id="contact" style="background:rgba(10,10,18,0.5);">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;">
+      <span class="section-label">06 — Connect</span>
+      <h2 class="section-title" style="font-size:clamp(2rem,5vw,4rem);">Let's Build Something Useful.</h2>
+      <p style="color:var(--text-secondary);max-width:550px;margin:0 auto 2rem;line-height:1.8;">
+        I'm open to software development opportunities, collaborations and projects where I can solve real problems with technology.
+      </p>
+      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;">
+        {% if github_url %}<a href="{{ github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>{% endif %}
+        {% if linkedin_url %}<a href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn</a>{% endif %}
+        {% if contact_email %}<a href="mailto:{{ contact_email }}" class="btn btn-primary">Send Email</a>{% endif %}
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal reveal-delay-2">
+      <div class="glass-card hud-corner" style="padding:2.5rem;max-width:640px;margin:0 auto;">
+        <h3 style="font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple-400);margin-bottom:1.5rem;">Send a Message</h3>
+        <form id="contact-form" novalidate>
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="id_name" class="form-label">Name</label>
+            <input type="text" id="id_name" name="name" class="form-input" placeholder="Your Name" required maxlength="200" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="id_email" class="form-label">Email</label>
+            <input type="email" id="id_email" name="email" class="form-input" placeholder="your@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="id_subject" class="form-label">Subject</label>
+            <input type="text" id="id_subject" name="subject" class="form-input" placeholder="Subject" required maxlength="300">
+          </div>
+          <div class="form-group">
+            <label for="id_message" class="form-label">Message</label>
+            <textarea id="id_message" name="message" class="form-input" rows="5" placeholder="Your message..." required style="resize:vertical;"></textarea>
+          </div>
+          <div id="contact-feedback" class="form-feedback" role="alert" aria-live="assertive"></div>
+          <button type="submit" class="btn btn-primary" id="contact-submit" style="width:100%;justify-content:center;margin-top:0.5rem;">
+            <span id="contact-btn-text">Send Message</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+window.HERO_ROLES = [{% for role in hero_roles %}"{{ role.role|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}];
+</script>
+<script src="{% static 'js/hero3d.js' %}"></script>
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,1339 @@
+[
+{
+  "model": "profile_app.skill",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "category": "programming",
+    "proficiency": "primary",
+    "icon": "",
+    "order": 0,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 2,
+  "fields": {
+    "name": "SQL",
+    "category": "programming",
+    "proficiency": "working",
+    "icon": "",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 3,
+  "fields": {
+    "name": "HTML",
+    "category": "web",
+    "proficiency": "primary",
+    "icon": "",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 4,
+  "fields": {
+    "name": "CSS",
+    "category": "web",
+    "proficiency": "primary",
+    "icon": "",
+    "order": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 5,
+  "fields": {
+    "name": "JavaScript",
+    "category": "web",
+    "proficiency": "working",
+    "icon": "",
+    "order": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 6,
+  "fields": {
+    "name": "Django",
+    "category": "web",
+    "proficiency": "primary",
+    "icon": "",
+    "order": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 7,
+  "fields": {
+    "name": "Scikit-learn",
+    "category": "data_ml",
+    "proficiency": "working",
+    "icon": "",
+    "order": 6,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 8,
+  "fields": {
+    "name": "Pandas",
+    "category": "data_ml",
+    "proficiency": "working",
+    "icon": "",
+    "order": 7,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 9,
+  "fields": {
+    "name": "NumPy",
+    "category": "data_ml",
+    "proficiency": "working",
+    "icon": "",
+    "order": 8,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 10,
+  "fields": {
+    "name": "Matplotlib",
+    "category": "data_ml",
+    "proficiency": "familiar",
+    "icon": "",
+    "order": 9,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 11,
+  "fields": {
+    "name": "NLP",
+    "category": "data_ml",
+    "proficiency": "working",
+    "icon": "",
+    "order": 10,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 12,
+  "fields": {
+    "name": "Machine Learning",
+    "category": "data_ml",
+    "proficiency": "working",
+    "icon": "",
+    "order": 11,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 13,
+  "fields": {
+    "name": "MySQL",
+    "category": "database",
+    "proficiency": "working",
+    "icon": "",
+    "order": 12,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 14,
+  "fields": {
+    "name": "PostgreSQL",
+    "category": "database",
+    "proficiency": "working",
+    "icon": "",
+    "order": 13,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 15,
+  "fields": {
+    "name": "AWS Cloud",
+    "category": "cloud",
+    "proficiency": "familiar",
+    "icon": "",
+    "order": 14,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 16,
+  "fields": {
+    "name": "Visual Studio Code",
+    "category": "tools",
+    "proficiency": "primary",
+    "icon": "",
+    "order": 15,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 17,
+  "fields": {
+    "name": "PyCharm",
+    "category": "tools",
+    "proficiency": "working",
+    "icon": "",
+    "order": 16,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 18,
+  "fields": {
+    "name": "Git / GitHub",
+    "category": "tools",
+    "proficiency": "working",
+    "icon": "",
+    "order": 17,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 19,
+  "fields": {
+    "name": "Microsoft Office",
+    "category": "tools",
+    "proficiency": "familiar",
+    "icon": "",
+    "order": 18,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 20,
+  "fields": {
+    "name": "Claude",
+    "category": "ai_tools",
+    "proficiency": "primary",
+    "icon": "",
+    "order": 19,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 21,
+  "fields": {
+    "name": "ChatGPT",
+    "category": "ai_tools",
+    "proficiency": "primary",
+    "icon": "",
+    "order": 20,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 22,
+  "fields": {
+    "name": "OpenCode",
+    "category": "ai_tools",
+    "proficiency": "working",
+    "icon": "",
+    "order": 21,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.skill",
+  "pk": 23,
+  "fields": {
+    "name": "Antigravity",
+    "category": "ai_tools",
+    "proficiency": "working",
+    "icon": "",
+    "order": 22,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "category": "programming",
+    "description": "Primary backend language for web development and ML projects",
+    "related_project": "ResumeAI, Toxic Comment Classification",
+    "color": "#3776ab",
+    "order": 0,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 2,
+  "fields": {
+    "name": "SQL",
+    "category": "programming",
+    "description": "Database querying and management",
+    "related_project": "All Django projects",
+    "color": "#f29111",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 3,
+  "fields": {
+    "name": "Django",
+    "category": "web",
+    "description": "Backend web framework for ResumeAI and Toxic Comment Classification",
+    "related_project": "ResumeAI, Toxic Comment Classification",
+    "color": "#092e20",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 4,
+  "fields": {
+    "name": "HTML",
+    "category": "web",
+    "description": "Markup for all web projects",
+    "related_project": "All web projects",
+    "color": "#e34f26",
+    "order": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 5,
+  "fields": {
+    "name": "CSS",
+    "category": "web",
+    "description": "Styling for all web projects",
+    "related_project": "All web projects",
+    "color": "#1572b6",
+    "order": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 6,
+  "fields": {
+    "name": "JavaScript",
+    "category": "web",
+    "description": "Frontend interactivity and animations",
+    "related_project": "PID Controls, Portfolio",
+    "color": "#f7df1e",
+    "order": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 7,
+  "fields": {
+    "name": "Next.js",
+    "category": "web",
+    "description": "React framework used for PID Controls corporate website",
+    "related_project": "PID Controls",
+    "color": "#000000",
+    "order": 6,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 8,
+  "fields": {
+    "name": "Django REST Framework",
+    "category": "web",
+    "description": "API endpoint development",
+    "related_project": "ResumeAI",
+    "color": "#a30000",
+    "order": 7,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 9,
+  "fields": {
+    "name": "Scikit-learn",
+    "category": "data_ml",
+    "description": "Machine learning pipeline — TF-IDF + Logistic Regression",
+    "related_project": "Toxic Comment Classification",
+    "color": "#f89939",
+    "order": 8,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 10,
+  "fields": {
+    "name": "Pandas",
+    "category": "data_ml",
+    "description": "Data manipulation and analysis",
+    "related_project": "Toxic Comment Classification",
+    "color": "#150458",
+    "order": 9,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 11,
+  "fields": {
+    "name": "NumPy",
+    "category": "data_ml",
+    "description": "Numerical computing for ML preprocessing",
+    "related_project": "Toxic Comment Classification",
+    "color": "#013243",
+    "order": 10,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 12,
+  "fields": {
+    "name": "Matplotlib",
+    "category": "data_ml",
+    "description": "Data visualization for ML results",
+    "related_project": "Toxic Comment Classification",
+    "color": "#11557c",
+    "order": 11,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 13,
+  "fields": {
+    "name": "NLP",
+    "category": "data_ml",
+    "description": "Text preprocessing, TF-IDF vectorization for toxicity detection",
+    "related_project": "Toxic Comment Classification",
+    "color": "#9333ea",
+    "order": 12,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 14,
+  "fields": {
+    "name": "OpenRouter API",
+    "category": "data_ml",
+    "description": "LLM access for AI career assistant and chatbot features",
+    "related_project": "ResumeAI",
+    "color": "#7c3aed",
+    "order": 13,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 15,
+  "fields": {
+    "name": "PostgreSQL",
+    "category": "database",
+    "description": "Production database for Django applications",
+    "related_project": "ResumeAI",
+    "color": "#336791",
+    "order": 14,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 16,
+  "fields": {
+    "name": "MySQL",
+    "category": "database",
+    "description": "Relational database management",
+    "related_project": "Various projects",
+    "color": "#00618a",
+    "order": 15,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 17,
+  "fields": {
+    "name": "AWS Cloud",
+    "category": "cloud",
+    "description": "Cloud computing fundamentals and core AWS services (Practitioner level)",
+    "related_project": "",
+    "color": "#ff9900",
+    "order": 16,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 18,
+  "fields": {
+    "name": "Git / GitHub",
+    "category": "tools",
+    "description": "Version control for all projects",
+    "related_project": "All projects",
+    "color": "#f05032",
+    "order": 17,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 19,
+  "fields": {
+    "name": "ReportLab",
+    "category": "tools",
+    "description": "PDF generation for resume export feature",
+    "related_project": "ResumeAI",
+    "color": "#cc0000",
+    "order": 18,
+    "is_active": true
+  }
+},
+{
+  "model": "profile_app.technology",
+  "pk": 20,
+  "fields": {
+    "name": "Google OAuth",
+    "category": "tools",
+    "description": "Authentication via Google for ResumeAI",
+    "related_project": "ResumeAI",
+    "color": "#4285f4",
+    "order": 19,
+    "is_active": true
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 2,
+  "fields": {
+    "name": "Django",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 3,
+  "fields": {
+    "name": "Django REST Framework",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 4,
+  "fields": {
+    "name": "PostgreSQL",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 5,
+  "fields": {
+    "name": "OpenRouter API",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 6,
+  "fields": {
+    "name": "ReportLab",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 7,
+  "fields": {
+    "name": "django-allauth",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 8,
+  "fields": {
+    "name": "Google OAuth",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 9,
+  "fields": {
+    "name": "Google Drive API",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 10,
+  "fields": {
+    "name": "WhiteNoise",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 11,
+  "fields": {
+    "name": "Vercel",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 12,
+  "fields": {
+    "name": "Scikit-learn",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 13,
+  "fields": {
+    "name": "TF-IDF",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 14,
+  "fields": {
+    "name": "Logistic Regression",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 15,
+  "fields": {
+    "name": "Pandas",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 16,
+  "fields": {
+    "name": "NumPy",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 17,
+  "fields": {
+    "name": "HTML",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 18,
+  "fields": {
+    "name": "CSS",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 19,
+  "fields": {
+    "name": "JavaScript",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 20,
+  "fields": {
+    "name": "Next.js",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 21,
+  "fields": {
+    "name": "React",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 22,
+  "fields": {
+    "name": "Tailwind CSS",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 23,
+  "fields": {
+    "name": "Machine Learning",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.projecttechnology",
+  "pk": 24,
+  "fields": {
+    "name": "NLP",
+    "color": "#9333ea"
+  }
+},
+{
+  "model": "projects.project",
+  "pk": 1,
+  "fields": {
+    "title": "ResumeAI",
+    "slug": "resumeai",
+    "category": "AI / Career Technology / Django",
+    "short_description": "An AI-powered Django web application for creating ATS-friendly resumes, analyzing resumes against job descriptions, and improving them with AI.",
+    "full_description": "ResumeAI is a production-grade Django web application that helps job seekers create, analyze, and improve their resumes using artificial intelligence.\n\nBuilt with Django REST Framework and integrated with OpenRouter LLMs, the application provides real-time ATS scoring, keyword analysis, and AI-powered improvement suggestions tailored to specific job descriptions.",
+    "problem": "Job seekers struggle to optimize resumes for ATS (Applicant Tracking Systems). Generic resume templates fail to highlight the right keywords, resulting in qualified candidates being filtered before human review.",
+    "solution": "ResumeAI combines a structured resume builder with AI analysis. Users can build resumes, check their ATS compatibility score, receive keyword and formatting feedback, and get AI-powered improvement suggestions — all in one Django application.",
+    "features": "Resume builder with live preview\nPDF export via ReportLab\nATS score checker\nKeyword analysis\nSection-by-section analysis\nFormatting analysis\nReadability analysis\nAI career assistant\nJob-specific resume improvement\nGoogle OAuth authentication\nGoogle Drive integration\nDjango Admin dashboard\nAI model and settings management\nUsage limits per user",
+    "architecture": "Django monolith with REST API endpoints for analysis features. PostgreSQL for user data and resumes. OpenRouter API for LLM calls. ReportLab for PDF generation. django-allauth for Google OAuth. WhiteNoise for static file serving.",
+    "challenges": "Implementing reliable PDF generation that matches the live preview. Handling Google Drive API OAuth flow within Django. Rate-limiting OpenRouter API calls to control costs. Designing a resume data model flexible enough for varied resume structures.",
+    "result": "A functional, production-deployed Django application with full authentication, AI integration, and PDF export capabilities.",
+    "learning": "Learned to integrate multiple third-party APIs within a single Django application. Gained experience with PDF generation, OAuth flows, and LLM prompt engineering for structured output.",
+    "thumbnail": "projects/thumbnails/resumeai-thumb.png",
+    "hover_gif": "projects/gifs/resumeai-hover.gif",
+    "video": "",
+    "github_url": "https://github.com/NagasrinivasGovvala/ResumeAI",
+    "live_url": "https://resume-ai-seven-chi.vercel.app",
+    "is_featured": true,
+    "is_completed": true,
+    "order": 0,
+    "created_at": "2026-08-30T12:11:58.188Z",
+    "updated_at": "2026-08-30T13:00:28.420Z",
+    "technologies": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+    ]
+  }
+},
+{
+  "model": "projects.project",
+  "pk": 2,
+  "fields": {
+    "title": "Toxic Comment Classification",
+    "slug": "toxic-comment-classification",
+    "category": "Machine Learning / NLP",
+    "short_description": "A Django web application that detects and classifies comments across six toxicity categories using a TF-IDF + Logistic Regression ML pipeline.",
+    "full_description": "Toxic Comment Classification is a machine learning web application built with Django that analyzes text comments and classifies them across six toxicity categories: Toxic, Severe Toxic, Obscene, Threat, Insult, and Identity Hate.\n\nThe ML pipeline uses TF-IDF vectorization combined with multi-output Logistic Regression classification, implemented with Scikit-learn and deployed within a Django application.",
+    "problem": "Online platforms struggle with automated moderation at scale. Manual review is slow and inconsistent. Existing solutions are often black boxes without interpretable category breakdowns.",
+    "solution": "A Django application that wraps a trained TF-IDF + Logistic Regression pipeline. Users can submit comments and receive category-level toxicity scores with visualizations. The application includes a REST API for programmatic access.",
+    "features": "User authentication and dashboard\nComment toxicity prediction\nMulti-label classification (6 categories)\nAPI-based prediction endpoint\nAnalytics and usage statistics\nVisualization of toxicity scores\nModel training pipeline\nBatch comment processing",
+    "architecture": "Django web application with a trained Scikit-learn pipeline (TF-IDF vectorizer + multi-output Logistic Regression). Model is serialized with joblib and loaded at application startup. REST API for programmatic prediction access.",
+    "challenges": "Building a multi-output classifier that handles the correlation between toxicity categories. Creating meaningful visualizations for multi-label prediction results. Optimizing model loading time at Django startup.",
+    "result": "A working ML web application with multi-label toxicity classification, visualization, and API access.",
+    "learning": "Gained hands-on experience with NLP preprocessing, TF-IDF vectorization, multi-output classification, and deploying ML models within a Django application.",
+    "thumbnail": "projects/thumbnails/toxic-thumb.png",
+    "hover_gif": "projects/gifs/toxic-hover.gif",
+    "video": "",
+    "github_url": "https://github.com/NagasrinivasGovvala/Toxic-Comment-Classification",
+    "live_url": "https://toxic-comment-classification-three.vercel.app/login/",
+    "is_featured": true,
+    "is_completed": true,
+    "order": 1,
+    "created_at": "2026-08-30T12:12:00.731Z",
+    "updated_at": "2026-08-30T13:00:29.274Z",
+    "technologies": [
+      1,
+      2,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      23,
+      24
+    ]
+  }
+},
+{
+  "model": "projects.project",
+  "pk": 3,
+  "fields": {
+    "title": "PID Controls — Corporate Website",
+    "slug": "pid-controls",
+    "category": "Production Website / BMS / Automation",
+    "short_description": "A professional corporate website developed for a Hyderabad-based Building Management System and automation company, built with Next.js and deployed on Vercel.",
+    "full_description": "PID Controls is a professional corporate website built for a real Hyderabad-based Building Management System (BMS) and automation company.\n\nBuilt with Next.js App Router, React, and Tailwind CSS, this is a production-deployed website with real SEO implementation, structured data, and business contact integration.",
+    "problem": "The company needed a professional web presence that accurately communicated their BMS and automation services to potential clients, with proper SEO and contact functionality.",
+    "solution": "A production-grade Next.js corporate website with full page structure, SEO metadata, Google Maps, WhatsApp integration, and structured data for local business discovery.",
+    "features": "Responsive multi-page website\nHome, About, Services, Industries pages\nProcess and Why Choose Us sections\nInteractive project-process dashboard\nScroll animations\nWhatsApp and call buttons\nConsultation contact form\nGoogle Maps integration\nSEO metadata and Open Graph\nXML Sitemap\nrobots.txt\nLocalBusiness structured data",
+    "architecture": "Next.js App Router with server-side rendering. Tailwind CSS for styling. Deployed on Vercel with CI/CD. Inter and Montserrat typography. SVG custom graphics.",
+    "challenges": "Implementing LocalBusiness structured data correctly for local SEO. Ensuring scroll animations work cross-browser. Optimizing Core Web Vitals on the Vercel deployment.",
+    "result": "A live, production-deployed corporate website for a real client, demonstrating the ability to build and deliver business-oriented web projects.",
+    "learning": "Learned Next.js App Router architecture, production SEO implementation, and the workflow of delivering a complete website to a real client.",
+    "thumbnail": "projects/thumbnails/pid-thumb.png",
+    "hover_gif": "projects/gifs/pid-hover.gif",
+    "video": "",
+    "github_url": "https://github.com/NagasrinivasGovvala/pid-controls",
+    "live_url": "https://pid-controls.vercel.app",
+    "is_featured": true,
+    "is_completed": true,
+    "order": 2,
+    "created_at": "2026-08-30T12:12:03.098Z",
+    "updated_at": "2026-08-30T12:21:39.762Z",
+    "technologies": [
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ]
+  }
+},
+{
+  "model": "projects.futureproject",
+  "pk": 1,
+  "fields": {
+    "title": "Apartment Operating System",
+    "slug": "apartment-operating-system",
+    "concept": "A unified digital platform for managing apartment communities — residents, maintenance, payments, and communications.",
+    "description": "A comprehensive web application designed to streamline apartment community management. Residents can submit maintenance requests, make payments, receive announcements, and communicate with management through a single platform. Administrators get a real-time dashboard of community operations.",
+    "status": "concept",
+    "progress_percentage": null,
+    "thumbnail": "",
+    "technologies_planned": "Python, Django, PostgreSQL, WebSockets, React, Payment Gateway",
+    "order": 0,
+    "is_active": true
+  }
+},
+{
+  "model": "projects.futureproject",
+  "pk": 2,
+  "fields": {
+    "title": "Voice AI for Farmers",
+    "slug": "voice-ai-for-farmers",
+    "concept": "A voice-driven AI assistant that answers agricultural questions in local languages, accessible via basic smartphones.",
+    "description": "A voice-first AI application designed for Indian farmers with limited digital literacy. Farmers can ask questions about crops, weather, prices, and government schemes in Telugu or Hindi using voice input. The system processes speech, queries relevant agricultural data, and responds in natural language.",
+    "status": "research",
+    "progress_percentage": null,
+    "thumbnail": "",
+    "technologies_planned": "Python, Django, Speech-to-Text API, OpenRouter LLM, Hindi/Telugu NLP",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "projects.futureproject",
+  "pk": 3,
+  "fields": {
+    "title": "AI Skill-to-Job Engine",
+    "slug": "ai-skill-to-job-engine",
+    "concept": "An AI system that analyzes a developer's skill profile and recommends specific learning paths to reach target job roles.",
+    "description": "A data-driven career navigation tool. Developers input their current skills, desired role, and timeline. The AI analyzes skill gaps, recommends a prioritized learning roadmap, and tracks progress. Integrates job market data to ensure recommendations reflect actual hiring requirements.",
+    "status": "concept",
+    "progress_percentage": null,
+    "thumbnail": "",
+    "technologies_planned": "Python, Django, OpenRouter LLM, PostgreSQL, Data Visualization, Job APIs",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "education.education",
+  "pk": 3,
+  "fields": {
+    "degree": "B.Tech",
+    "field": "Computer Science and Engineering",
+    "institution": "Srinivasa Institute of Engineering and Technology",
+    "year": "2022-2025",
+    "grade": "CGPA: 7.17",
+    "description": "",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "education.education",
+  "pk": 4,
+  "fields": {
+    "degree": "Diploma",
+    "field": "Computer Engineering",
+    "institution": "BVC Institute of Technology and Science",
+    "year": "2019-2022",
+    "grade": "Percentage: 70%",
+    "description": "",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "experience.experience",
+  "pk": 3,
+  "fields": {
+    "title": "Data Annotation Specialist",
+    "organization": "Aligner",
+    "exp_type": "part_time",
+    "start_date": "2026-01-01",
+    "end_date": null,
+    "is_current": true,
+    "description": "Part-time data annotation work — labeling and reviewing AI training data to improve machine learning model quality.",
+    "technologies": "",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "experience.experience",
+  "pk": 4,
+  "fields": {
+    "title": "AWS Cloud Foundations Training",
+    "organization": "AWS / Training Program",
+    "exp_type": "virtual_internship",
+    "start_date": "2025-01-01",
+    "end_date": "2025-12-31",
+    "is_current": false,
+    "description": "Completed AWS Cloud Foundations and AWS Cloud Practitioner training. Gained knowledge of cloud computing fundamentals, AWS core services, security, architecture, and pricing models.",
+    "technologies": "",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "chatbot.chatbotsettings",
+  "pk": 1,
+  "fields": {
+    "is_enabled": true,
+    "model": "google/gemini-2.5-flash",
+    "max_tokens": 1024,
+    "temperature": 0.4,
+    "rate_limit_per_hour": 20,
+    "welcome_message": "Hi. I'm Srinivas AI. Ask me about Nagasrinivas's projects, skills, education, technologies or development work.",
+    "system_prompt_extra": ""
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 1,
+  "fields": {
+    "session_key": "anon",
+    "user_message": "What projects did Nagasrinivas build?",
+    "ai_response": "Nagasrinivas built the following projects:\n\n*   **ResumeAI**: An AI-powered Django web application for creating ATS-friendly resumes, analyzing resumes against job descriptions, and improving them with AI.\n*   **Toxic Comment Classification**: A Django web application that detects and classifies comments across six toxicity categories using a TF-IDF + Logistic Regression ML pipeline.\n*   **PID Controls — Corporate Website**: A professional corporate website developed for a Hyderabad-based Building Management System and automation company, built with Next.js and deployed on Vercel.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T04:50:54.962Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 2,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "What projects has Nagasrinivas built?",
+    "ai_response": "Nagasrinivas has built the following projects:\n\n*   **ResumeAI**: An AI-powered Django web application for creating ATS-friendly resumes, analyzing resumes against job descriptions, and improving them with AI.\n*   **Toxic Comment Classification**: A Django web application that detects and classifies comments across six toxicity categories using a TF-IDF + Logistic Regression ML pipeline.\n*   **PID Controls — Corporate Website**: A professional corporate website developed for a Hyderabad-based Building Management System and automation company, built with Next.js and deployed on Vercel.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T04:53:59.506Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 3,
+  "fields": {
+    "session_key": "anon",
+    "user_message": "What are Nagasrinivas skills and tech stack?",
+    "ai_response": "Nagasrinivas's skills and tech stack include:\n\n*   **Cloud:** **AWS Cloud**\n*   **Data / ML:** **Scikit-learn**, **Pandas**, **NumPy**, **Matplotlib**, **NLP**, **OpenRouter API**\n*   **Database:** **PostgreSQL**, **MySQL**\n*   **Programming:** **Python**, **SQL**\n*   **Tools:** **Git / GitHub**, **ReportLab**, **Google OAuth**\n*   **Web:** **Django**, **HTML**, **CSS**, **JavaScript**, **Next.js**, **Django REST Framework**",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T05:01:21.620Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 4,
+  "fields": {
+    "session_key": "vw1sznpyf4xocgineyl3bufkdbdknnbt",
+    "user_message": "Tell me about his education and where he graduated",
+    "ai_response": "Nagasrinivas graduated with a:\n- **B.Tech in Computer Science and Engineering** from Srinivasa Institute of Engineering and Technology in 2025.\n- **Diploma in Computer Engineering** from BVC Institute of Technology and Science in 2022.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T05:01:23.642Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 5,
+  "fields": {
+    "session_key": "vw1sznpyf4xocgineyl3bufkdbdknnbt",
+    "user_message": "Is he available for job opportunities?",
+    "ai_response": "Yes, Nagasrinivas Govvala is open to work and hiring.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T05:01:25.929Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 6,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "Tell me about ResumeAI",
+    "ai_response": "ResumeAI is an AI-powered Django web application designed for creating ATS-friendly resumes, analyzing resumes against job descriptions, and improving them with AI. It uses Python, Django, Django REST Framework, PostgreSQL, OpenRouter API, ReportLab, and Google OAuth. You can find it on GitHub at https://github.com/NagasrinivasGovvala/ResumeAI and see it live at https://resume-ai-seven-chi.vercel.app.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T05:09:54.465Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 7,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "Tell me about ResumeAI",
+    "ai_response": "**ResumeAI** is an AI-powered Django web application designed to create ATS-friendly resumes, analyze resumes against job descriptions, and improve them using AI. It utilizes Python, Django, Django REST Framework, PostgreSQL, OpenRouter API, ReportLab, and Google OAuth. You can find it on GitHub at https://github.com/NagasrinivasGovvala/ResumeAI and see it live at https://resume-ai-seven-chi.vercel.app.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T05:19:42.855Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 8,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "give me the live demo links",
+    "ai_response": "Here are the live demo links for Nagasrinivas Govvala's completed projects:\n\n*   **ResumeAI:** https://resume-ai-seven-chi.vercel.app\n*   **Toxic Comment Classification:** https://toxic-comment-classification-three.vercel.app/login/\n*   **PID Controls — Corporate Website:** https://pid-controls.vercel.app",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T05:20:14.128Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 9,
+  "fields": {
+    "session_key": "anon",
+    "user_message": "Can you share the live demo links of your projects?",
+    "ai_response": "- **ResumeAI**: [ResumeAI Live Demo](https://resume-ai-seven-chi.vercel.app)\n- **Toxic Comment Classification**: [Toxic Comment Classification Live Demo](https://toxic-comment-classification-three.vercel.app/login/)\n- **PID Controls — Corporate Website**: [PID Controls Live Demo](https://pid-controls.vercel.app)",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T05:54:38.948Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 10,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "Tell me about ResumeAI",
+    "ai_response": "- **ResumeAI** is an AI-powered Django web application.\n- It helps create ATS-friendly resumes, analyzes resumes against job descriptions, and improves them using AI.\n- The core technologies include **Python**, **Django**, **Django REST Framework**, **PostgreSQL**, and **OpenRouter API**.\n- You can find the live demo here: [ResumeAI Live Demo](https://resume-ai-seven-chi.vercel.app) and the GitHub repository here: [GitHub Repo](https://github.com/NagasrinivasGovvala/ResumeAI).",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T06:09:55.942Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 11,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "tell me about nagasrinivas",
+    "ai_response": "Nagasrinivas Govvala is a fresher software developer from Hyderabad, Telangana, graduating with a B.Tech in Computer Science and Engineering in 2025.\n\nHe specializes in Python and Django, with experience in machine learning and NLP, and builds production-oriented web applications. He actively uses AI-assisted development tools like Claude and ChatGPT in his workflow.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T06:15:16.414Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 12,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "tell about toxic comments classification project",
+    "ai_response": "- **Toxic Comment Classification** is a Django web application that identifies and categorizes comments into six toxicity types using a TF-IDF and Logistic Regression machine learning pipeline.\n- It uses **Python**, **Django**, **Scikit-learn**, **TF-IDF**, **Logistic Regression**, **Pandas**, **NumPy**, **HTML**, **CSS**, **JavaScript**, **Machine Learning**, and **NLP**.\n- [Toxic Comment Classification Live Demo](https://toxic-comment-classification-three.vercel.app/login/)\n- [GitHub Repo](https://github.com/NagasrinivasGovvala/Toxic-Comment-Classification)",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T06:21:24.106Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 13,
+  "fields": {
+    "session_key": "anon",
+    "user_message": "Are you currently employed at a company?",
+    "ai_response": "Nagasrinivas Govvala is not currently employed at any company and is actively looking for full-time software developer job opportunities.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T06:37:02.786Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 14,
+  "fields": {
+    "session_key": "yuxrcdvmzaxjixy4iruutzsuqt8wwgwm",
+    "user_message": "What is your background, tech stack and what tools do you use?",
+    "ai_response": "Nagasrinivas is a fresher software developer graduating in 2025 with a B.Tech in CSE, specializing in **Python**, **Django**, machine learning, and NLP.\n\nHis core tech stack includes:\n- **Programming**: **Python**, **SQL**\n- **Web**: **Django**, **Django REST Framework**, **Next.js**, **HTML**, **CSS**, **JavaScript**\n- **Data/ML**: **Scikit-learn**, **Pandas**, **NumPy**, **NLP**, **OpenRouter API**\n- **Databases**: **PostgreSQL**, **MySQL**\n- **Cloud**: **AWS Cloud**\n\nHe actively uses AI tools like Claude and ChatGPT in his development workflow.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T06:37:05.034Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 15,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "Tell me about ResumeAI",
+    "ai_response": "- **ResumeAI** is an AI-powered Django web application designed to create ATS-friendly resumes.\n- It analyzes resumes against job descriptions and uses AI to suggest improvements.\n- The core technologies include **Python**, **Django**, **Django REST Framework**, **PostgreSQL**, and **OpenRouter API**.\n- [ResumeAI Live Demo](https://resume-ai-seven-chi.vercel.app)\n- [GitHub Repo](https://github.com/NagasrinivasGovvala/ResumeAI)",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T06:57:59.497Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 16,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "tel me about nagasrinivas",
+    "ai_response": "Nagasrinivas Govvala is a fresher software developer from Hyderabad, Telangana, graduating with a B.Tech in Computer Science and Engineering in 2025.\nHe specializes in **Python**, **Django**, **Machine Learning**, and **NLP**, focusing on production-oriented web applications.\nHe actively uses AI-assisted development tools like Claude and ChatGPT.\nNagasrinivas is currently seeking full-time software developer job opportunities.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T06:58:19.165Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 17,
+  "fields": {
+    "session_key": "anon",
+    "user_message": "tell me about nagasrinivas",
+    "ai_response": "**Nagasrinivas Govvala** is a fresher looking for a software developer role from Hyderabad.\n- He specializes in **Python**, **Django**, **Machine Learning**, and **NLP**, focusing on production-oriented web applications.\n- He actively uses AI-assisted development tools like Claude and ChatGPT.\n- Nagasrinivas is currently seeking full-time software developer job opportunities.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T07:01:58.294Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 18,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "tell me about nagasrinivas",
+    "ai_response": "**Nagasrinivas Govvala** is a fresher looking for a software developer role from Hyderabad.\n- He specializes in **Python**, **Django**, **Machine Learning**, and **NLP**, focusing on production-oriented web applications.\n- He actively uses AI-assisted development tools like Claude and ChatGPT in his workflow.\n- Nagasrinivas is currently seeking full-time software developer job opportunities.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T07:04:25.940Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 19,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "tell me about chaitanya",
+    "ai_response": "I don't have that information in Nagasrinivas's portfolio.",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T07:05:00.794Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 20,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "about toxic comments project",
+    "ai_response": "- **Toxic Comment Classification** is a Django web application that detects and classifies comments across six toxicity categories.\n- It uses a **TF-IDF** + **Logistic Regression** machine learning pipeline.\n- Key technologies include **Python**, **Django**, **Scikit-learn**, **TF-IDF**, and **Logistic Regression**.\n- [GitHub Repo](https://github.com/NagasrinivasGovvala/Toxic-Comment-Classification)\n- [Toxic Comment Classification Live Demo](https://toxic-comment-classification-three.vercel.app/login/)",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T07:05:57.752Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 21,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "about pid controls",
+    "ai_response": "- **PID Controls — Corporate Website** is a professional corporate website developed for a Hyderabad-based Building Management System and automation company.\n- It was built with **Next.js** and deployed on Vercel.\n- [PID Controls Live Demo](https://pid-controls.vercel.app)\n- [GitHub Repo](https://github.com/NagasrinivasGovvala/pid-controls)",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T07:06:09.169Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 22,
+  "fields": {
+    "session_key": "anon",
+    "user_message": "Tell me about the PID Controls project",
+    "ai_response": "- **PID Controls — Corporate Website** is a professional corporate website developed for a Hyderabad-based Building Management System and automation company.\n- It was built with **Next.js** and deployed on Vercel.\n- Tech Stack: **HTML**, **CSS**, **JavaScript**, **Next.js**, **React**, **Tailwind CSS**.\n- [PID Controls Live Demo](https://pid-controls.vercel.app)\n- [GitHub Repo](https://github.com/NagasrinivasGovvala/pid-controls)",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T07:12:03.283Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 23,
+  "fields": {
+    "session_key": "anon",
+    "user_message": "Tell me about the PID Controls project and how it was built",
+    "ai_response": "- **PID Controls — Corporate Website** is a professional corporate website developed for the PID-Control startup company.\n- It was built leveraging AI tools like Claude, OpenCode, and ChatGPT in the development process.\n- The tech stack includes **HTML**, **CSS**, **JavaScript**, **Next.js**, **React**, and **Tailwind CSS**.\n- [PID Controls Live Demo](https://pid-controls.vercel.app)\n- [GitHub Repo](https://github.com/NagasrinivasGovvala/pid-controls)",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T07:13:47.250Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 24,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "Tell me about ResumeAI",
+    "ai_response": "- **ResumeAI** is an AI-powered Django web application designed to create ATS-friendly resumes, analyze them against job descriptions, and improve them using AI.\n- It uses **Python**, **Django**, **Django REST Framework**, **PostgreSQL**, **OpenRouter API**, **ReportLab**, and **Google OAuth**.\n- [ResumeAI Live Demo](https://resume-ai-seven-chi.vercel.app)\n- [GitHub Repo](https://github.com/NagasrinivasGovvala/ResumeAI)",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T07:15:51.231Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 25,
+  "fields": {
+    "session_key": "hcmqzbx277se2w9semo01kudlurxar5n",
+    "user_message": "pid controls",
+    "ai_response": "- **PID Controls — Corporate Website** is a professional corporate website developed for the PID-Control startup company.\n- Nagasrinivas leveraged AI tools like Claude, OpenCode, and ChatGPT in its development.\n- Tech Stack: **HTML**, **CSS**, **JavaScript**, **Next.js**, **React**, **Tailwind CSS**.\n- [PID Controls Live Demo](https://pid-controls.vercel.app)\n- [GitHub Repo](https://github.com/NagasrinivasGovvala/pid-controls)",
+    "ip_address": "127.0.0.1",
+    "created_at": "2026-08-31T07:16:02.211Z"
+  }
+},
+{
+  "model": "music.musictrack",
+  "pk": 1,
+  "fields": {
+    "title": "Cyber Ambient Track",
+    "artist": "Nagasrinivas Portfolio",
+    "audio_file": "music/leberch-calm-calm-music-580525.mp3",
+    "section": "default",
+    "default_volume": 0.35,
+    "is_active": true,
+    "order": 1
+  }
+},
+{
+  "model": "core.sitesettings",
+  "pk": 1,
+  "fields": {
+    "site_name": "Nagasrinivas Govvala",
+    "tagline": "Building practical software with Python, Django, AI and modern web technologies.",
+    "favicon": "",
+    "logo_text": "NG.",
+    "maintenance_mode": false,
+    "analytics_code": ""
+  }
+},
+{
+  "model": "core.personalprofile",
+  "pk": 1,
+  "fields": {
+    "full_name": "Nagasrinivas Govvala",
+    "title": "Fresher Software Developer",
+    "location": "Hyderabad, Telangana, India",
+    "email": "nagasrinivas@email.com",
+    "github_url": "https://github.com/NagasrinivasGovvala",
+    "linkedin_url": "https://linkedin.com/in/nagasrinivas-govvala",
+    "about_short": "A fresher software developer from Hyderabad building real applications with Python, Django, and AI.",
+    "about_long": "I'm Nagasrinivas Govvala — a fresher software developer from Hyderabad, Telangana.\n\nI graduated with a B.Tech in Computer Science and Engineering in 2025. My development journey has been defined not by years in industry, but by shipping real applications that solve actual problems.\n\nI build with Python and Django as my primary stack, experiment with machine learning and NLP, and create production-oriented websites. I use modern AI-assisted development workflows — Claude, ChatGPT, OpenCode, and Antigravity — as collaborative tools in my development process.\n\nMy approach: build and learn by shipping real projects. Every project in this portfolio was built to work, not just to demonstrate skills.",
+    "profile_image": "",
+    "resume": "resume/resume.pdf",
+    "available_for_work": true
+  }
+},
+{
+  "model": "core.herorole",
+  "pk": 1,
+  "fields": {
+    "role": "Fresher Software Developer",
+    "order": 0,
+    "is_active": true
+  }
+},
+{
+  "model": "core.herorole",
+  "pk": 2,
+  "fields": {
+    "role": "Python Developer",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "core.herorole",
+  "pk": 3,
+  "fields": {
+    "role": "Django Developer",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "core.herorole",
+  "pk": 4,
+  "fields": {
+    "role": "AI & Machine Learning Enthusiast",
+    "order": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "core.herorole",
+  "pk": 5,
+  "fields": {
+    "role": "Full-Stack Developer",
+    "order": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "core.seosettings",
+  "pk": 1,
+  "fields": {
+    "page_title": "Nagasrinivas Govvala | Fresher Software Developer — Python, Django, AI/ML",
+    "meta_description": "Nagasrinivas Govvala — Fresher Software Developer from Hyderabad. Python, Django, Machine Learning, AI, Full-Stack web development. ResumeAI, Toxic Comment Classification, PID Controls.",
+    "og_image": "",
+    "google_site_verification": "",
+    "canonical_url": ""
+  }
+}
+]
