@@ -8,35 +8,37 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.onrender.com',
+    '.vercel.app',
+    '.now.sh',
 ]
 
 env_allowed_hosts = os.environ.get('ALLOWED_HOSTS', '')
 if env_allowed_hosts:
     ALLOWED_HOSTS.extend([host.strip() for host in env_allowed_hosts.split(',') if host.strip()])
 
-render_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if render_hostname and render_hostname not in ALLOWED_HOSTS:
-    ALLOWED_HOSTS.append(render_hostname)
+vercel_url = os.environ.get('VERCEL_URL')
+if vercel_url and vercel_url not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(vercel_url)
 
-# CSRF Trusted Origins for Render & custom domains
+# CSRF Trusted Origins for Vercel & custom domains
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.onrender.com',
+    'https://*.vercel.app',
+    'https://*.now.sh',
 ]
-if render_hostname:
-    CSRF_TRUSTED_ORIGINS.append(f'https://{render_hostname}')
+if vercel_url:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{vercel_url}')
 
 env_csrf = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
 if env_csrf:
     CSRF_TRUSTED_ORIGINS.extend([origin.strip() for origin in env_csrf.split(',') if origin.strip()])
 
-# Database configuration: support DATABASE_URL or individual DB params or fallback to sqlite
+# Database configuration: support DATABASE_URL (Neon PostgreSQL) or individual DB params or fallback to sqlite
 DATABASE_URL = os.environ.get('DATABASE_URL')
 if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.config(
             default=DATABASE_URL,
-            conn_max_age=600,
+            conn_max_age=0,  # Recommended 0 for serverless Lambdas (Vercel) to avoid connection exhaustion
             conn_health_checks=True,
             ssl_require=True
         )
@@ -62,7 +64,7 @@ else:
             }
         }
 
-# Reverse proxy SSL header (essential for Render / Heroku / AWS reverse proxies)
+# Reverse proxy SSL header (essential for Vercel / Render / AWS reverse proxies)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = not DEBUG
 SESSION_COOKIE_SECURE = not DEBUG
@@ -83,6 +85,7 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+WHITENOISE_MANIFEST_STRICT = False
 
 # Email settings
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
