@@ -4,27 +4,18 @@ from .base import *
 
 DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
-# Host configuration
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '.vercel.app',
-    '.now.sh',
-]
-
-env_allowed_hosts = os.environ.get('ALLOWED_HOSTS', '')
-if env_allowed_hosts:
-    ALLOWED_HOSTS.extend([host.strip() for host in env_allowed_hosts.split(',') if host.strip()])
-
-vercel_url = os.environ.get('VERCEL_URL')
-if vercel_url and vercel_url not in ALLOWED_HOSTS:
-    ALLOWED_HOSTS.append(vercel_url)
+# Host configuration: Allow all hosts in production on Vercel / serverless
+ALLOWED_HOSTS = ['*']
 
 # CSRF Trusted Origins for Vercel & custom domains
 CSRF_TRUSTED_ORIGINS = [
     'https://*.vercel.app',
     'https://*.now.sh',
+    'http://localhost',
+    'http://127.0.0.1',
 ]
+
+vercel_url = os.environ.get('VERCEL_URL')
 if vercel_url:
     CSRF_TRUSTED_ORIGINS.append(f'https://{vercel_url}')
 
@@ -38,8 +29,8 @@ if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.config(
             default=DATABASE_URL,
-            conn_max_age=0,  # Recommended 0 for serverless Lambdas (Vercel) to avoid connection exhaustion
-            conn_health_checks=True,
+            conn_max_age=0,  # 0 for serverless Lambdas (Vercel) to avoid connection leaks
+            conn_health_checks=False,
             ssl_require=True
         )
     }
@@ -64,9 +55,10 @@ else:
             }
         }
 
-# Reverse proxy SSL header (essential for Vercel / Render / AWS reverse proxies)
+# Reverse proxy SSL header (essential for Vercel / Cloudflare reverse proxies)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = not DEBUG
+# Note: Vercel CDN enforces SSL at the edge; disable Lambda-level redirect to prevent internal loops
+SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
 SECURE_BROWSER_XSS_FILTER = True
@@ -76,13 +68,13 @@ SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
 
-# Static files handling with WhiteNoise
+# Static files handling with WhiteNoise (CompressedStaticFilesStorage avoids strict manifest lookups)
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 WHITENOISE_MANIFEST_STRICT = False
