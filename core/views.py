@@ -1,5 +1,10 @@
+import os
+import sys
+import json
+import traceback
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.db import connection
 from .models import HeroRole
 from profile_app.models import Skill, Technology
 from education.models import Education
@@ -29,6 +34,41 @@ def home(request):
         'contact_form': contact_form,
     }
     return render(request, 'core/home.html', context)
+
+
+def health_check(request):
+    """Diagnostic health check endpoint for debugging Vercel deployment."""
+    report = {
+        'status': 'healthy',
+        'python_version': sys.version,
+        'django_settings_module': os.environ.get('DJANGO_SETTINGS_MODULE', 'not set'),
+        'has_database_url_env': bool(os.environ.get('DATABASE_URL')),
+        'database_engine': connection.settings_dict.get('ENGINE', 'unknown'),
+        'database_host': connection.settings_dict.get('HOST', 'unknown'),
+    }
+
+    # Test Database Query
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            report['db_ping'] = 'SUCCESS'
+    except Exception as e:
+        report['status'] = 'error'
+        report['db_ping_error'] = str(e)
+        report['traceback'] = traceback.format_exc()
+
+    # Test Model Fetch
+    try:
+        report['hero_roles_count'] = HeroRole.objects.count()
+        report['projects_count'] = Project.objects.count()
+        report['skills_count'] = Skill.objects.count()
+    except Exception as e:
+        report['status'] = 'error'
+        report['model_query_error'] = str(e)
+        if 'traceback' not in report:
+            report['traceback'] = traceback.format_exc()
+
+    return JsonResponse(report, json_dumps_params={'indent': 2})
 
 
 def robots_txt(request):

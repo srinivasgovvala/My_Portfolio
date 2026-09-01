@@ -2,9 +2,10 @@ import os
 import dj_database_url
 from .base import *
 
-DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
+# Default DEBUG to True temporarily if not explicitly set to False, so runtime errors are visible
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-# Host configuration: Allow all hosts in production on Vercel / serverless
+# Host configuration: Allow all hosts in production on Vercel
 ALLOWED_HOSTS = ['*']
 
 # CSRF Trusted Origins for Vercel & custom domains
@@ -55,20 +56,16 @@ else:
             }
         }
 
-# Reverse proxy SSL header (essential for Vercel / Cloudflare reverse proxies)
+# Reverse proxy SSL header
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# Note: Vercel CDN enforces SSL at the edge; disable Lambda-level redirect to prevent internal loops
 SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
-SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
-SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
-SECURE_HSTS_PRELOAD = not DEBUG
 
-# Static files handling with WhiteNoise (CompressedStaticFilesStorage avoids strict manifest lookups)
+# Static files handling with WhiteNoise
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
