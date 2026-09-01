@@ -60,16 +60,14 @@ TEMPLATES = [
             BASE_DIR / 'templates',
             BASE_DIR / 'core' / 'templates',
             BASE_DIR / 'portfolio' / 'templates',
-            Path(__file__).resolve().parent.parent / 'templates',
-            Path('/var/task/templates'),
-            Path('/var/task/core/templates'),
-            Path('/var/task/portfolio/templates'),
-            Path.cwd() / 'templates',
-            Path.cwd() / 'core' / 'templates',
-            Path.cwd() / 'portfolio' / 'templates',
+            BASE_DIR / 'projects' / 'templates',
         ],
-        'APP_DIRS': True,
         'OPTIONS': {
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'core.template_loader.EmbeddedTemplateLoader',
+            ],
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
