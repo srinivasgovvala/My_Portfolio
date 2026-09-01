@@ -11,48 +11,72 @@
 
   if (!fab || !panel) return;
 
+  let openedAt = 0;
+
   function openChat() {
     panel.hidden = false;
     fab.setAttribute('aria-expanded', 'true');
-    openScrollY = window.scrollY;
-    if (input) setTimeout(() => input.focus(), 100);
+    openedAt = Date.now();
+    // Only auto-focus on desktop devices to avoid jarring keyboard pop-up & viewport scroll jumps on mobile
+    const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window && window.innerWidth <= 1024);
+    if (input && !isMobile) {
+      setTimeout(() => input.focus(), 150);
+    }
   }
+
   function closeChat() {
     panel.hidden = true;
     fab.setAttribute('aria-expanded', 'false');
   }
 
-  fab.addEventListener('click', (e) => {
-    e.stopPropagation();
-    panel.hidden ? openChat() : closeChat();
-  });
-  if (closeBtn) closeBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    closeChat();
-  });
-  if (aiToggleNav) aiToggleNav.addEventListener('click', (e) => {
-    e.stopPropagation();
-    panel.hidden ? openChat() : closeChat();
-  });
-
-  // Escape key
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) closeChat(); });
-
-  // Auto close when clicking or interacting with the actual website outside chatbot
-  document.addEventListener('pointerdown', (e) => {
-    if (!panel.hidden && !panel.contains(e.target) && !fab.contains(e.target) && (!aiToggleNav || !aiToggleNav.contains(e.target))) {
-      closeChat();
+  function toggleChat(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
     }
-  });
-
-  // Auto close when scrolling the main website
-  let openScrollY = 0;
-  function trackScroll() {
-    if (!panel.hidden && Math.abs(window.scrollY - openScrollY) > 80) {
+    if (panel.hidden) {
+      openChat();
+    } else {
       closeChat();
     }
   }
-  window.addEventListener('scroll', trackScroll, { passive: true });
+
+  fab.addEventListener('click', toggleChat);
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeChat();
+    });
+  }
+
+  if (aiToggleNav) {
+    aiToggleNav.addEventListener('click', toggleChat);
+  }
+
+  // Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !panel.hidden) {
+      closeChat();
+    }
+  });
+
+  // Close when clicking outside chatbot (safe against mobile taps and DOM unmounts)
+  document.addEventListener('click', (e) => {
+    if (panel.hidden) return;
+    if (Date.now() - openedAt < 350) return; // Guard against the initial opening tap
+    const target = e.target;
+    if (!target) return;
+
+    const isInsidePanel = panel.contains(target) || (target.closest && target.closest('#chatbot-panel'));
+    const isInsideFab = fab.contains(target) || (target.closest && target.closest('#chatbot-toggle, .chatbot-fab'));
+    const isInsideNavToggle = aiToggleNav && (aiToggleNav.contains(target) || (target.closest && target.closest('#aiToggleNav, .ai-toggle')));
+
+    if (!isInsidePanel && !isInsideFab && !isInsideNavToggle) {
+      closeChat();
+    }
+  });
 
   // Escape HTML to prevent XSS
   function escapeHtml(str) {
@@ -185,7 +209,9 @@
 
   // Suggestion chips
   document.querySelectorAll('.suggestion-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
+    chip.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       if (input) input.value = chip.dataset.msg;
       if (form) form.dispatchEvent(new Event('submit'));
     });
@@ -235,7 +261,8 @@
         appendMsg('AI assistant is temporarily unavailable. Please try again later.', 'error');
       } finally {
         if (sendBtn) sendBtn.disabled = false;
-        if (input) input.focus();
+        const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window && window.innerWidth <= 1024);
+        if (input && !isMobile) input.focus();
       }
     });
   }

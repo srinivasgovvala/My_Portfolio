@@ -1,4 +1,4 @@
-// Home page: typing animation + contact form AJAX
+// Home page: typing animation + modern contact form AJAX
 (function() {
   // Hero typing animation
   const nameEl = document.getElementById('hero-name');
@@ -9,7 +9,7 @@
   let charIndex = 0;
   let roleIndex = 0;
   let roleCharIndex = 0;
-  let phase = 'name'; // name -> pause -> role -> delete -> next
+  let phase = 'name';
   let timeoutId = null;
 
   function typeName() {
@@ -52,7 +52,6 @@
   }
 
   if (nameEl) {
-    // Respect reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       nameEl.textContent = NAME;
       if (roleEl) roleEl.textContent = rolesData[0];
@@ -61,7 +60,7 @@
     }
   }
 
-  // Contact form AJAX
+  // Modern Contact Form Logic
   const contactForm = document.getElementById('contact-form');
   const contactFeedback = document.getElementById('contact-feedback');
   const contactBtnText = document.getElementById('contact-btn-text');
@@ -70,9 +69,47 @@
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      const nameInput = document.getElementById('id_name');
+      const emailInput = document.getElementById('id_email');
+      const subjectInput = document.getElementById('id_subject');
+      const messageInput = document.getElementById('id_message');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const subject = subjectInput ? subjectInput.value.trim() : '';
+      const message = messageInput ? messageInput.value.trim() : '';
+
+      // Client-side validation
+      if (!name || name.length < 2) {
+        showFeedback('Please enter your name (at least 2 characters).', 'error');
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        showFeedback('Please enter a valid email address.', 'error');
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      if (!subject) {
+        showFeedback('Please enter a subject.', 'error');
+        if (subjectInput) subjectInput.focus();
+        return;
+      }
+
+      if (!message || message.length < 5) {
+        showFeedback('Please write a message (at least 5 characters).', 'error');
+        if (messageInput) messageInput.focus();
+        return;
+      }
+
+      // UI Loading state
       if (contactSubmit) contactSubmit.disabled = true;
-      if (contactBtnText) contactBtnText.textContent = 'Sending...';
-      if (contactFeedback) { contactFeedback.textContent = ''; contactFeedback.className = 'form-feedback'; }
+      if (contactBtnText) contactBtnText.textContent = 'Sending Message...';
+      showFeedback('Sending your message, please wait...', 'info');
 
       const formData = new FormData(contactForm);
       const csrf = (window.Utils && typeof window.Utils.getCsrfToken === 'function')
@@ -90,24 +127,34 @@
           headers: headers,
           body: formData,
         });
+
         const data = await res.json();
-        if (data.success) {
-          contactFeedback.textContent = data.message || "Thanks! I'll get back to you soon.";
-          contactFeedback.className = 'form-feedback success';
+
+        if (res.ok && data.success) {
+          showFeedback(data.message || "Thank you for reaching out! I'll get back to you shortly.", 'success');
           contactForm.reset();
         } else {
-          contactFeedback.textContent = data.error || 'Something went wrong. Please try again.';
-          contactFeedback.className = 'form-feedback error';
+          showFeedback(data.error || 'Something went wrong. Please check your inputs.', 'error');
         }
-      } catch (_) {
-        if (contactFeedback) {
-          contactFeedback.textContent = 'Network error. Please try again or send an email directly.';
-          contactFeedback.className = 'form-feedback error';
-        }
+      } catch (err) {
+        showFeedback('Network error. Please try again or send an email directly to srinivasgovvala128@gmail.com.', 'error');
       } finally {
         if (contactSubmit) contactSubmit.disabled = false;
         if (contactBtnText) contactBtnText.textContent = 'Send Message';
       }
     });
+  }
+
+  function showFeedback(msg, type) {
+    if (!contactFeedback) return;
+    contactFeedback.textContent = msg;
+    contactFeedback.className = `form-feedback ${type}`;
+    if (type === 'success') {
+      contactFeedback.style.color = '#38ef7d';
+    } else if (type === 'error') {
+      contactFeedback.style.color = '#ff6584';
+    } else {
+      contactFeedback.style.color = '#a78bfa';
+    }
   }
 })();

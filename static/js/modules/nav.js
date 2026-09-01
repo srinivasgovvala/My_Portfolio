@@ -49,16 +49,4 @@
   if (hamburger) hamburger.addEventListener('click', openMenu);
   if (mobileClose) mobileClose.addEventListener('click', closeMenu);
   document.querySelectorAll('.mobile-nav-link').forEach(a => a.addEventListener('click', closeMenu));
-
-  // AI toggle
-  const aiToggle = document.getElementById('aiToggleNav');
-  if (aiToggle) {
-    aiToggle.addEventListener('click', () => {
-      const panel = document.getElementById('chatbot-panel');
-      if (panel) {
-        panel.hidden = !panel.hidden;
-        panel.removeAttribute('hidden') || (panel.hidden = false);
-      }
-    });
-  }
 })();

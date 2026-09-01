@@ -24,18 +24,24 @@ env_csrf = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
 if env_csrf:
     CSRF_TRUSTED_ORIGINS.extend([origin.strip() for origin in env_csrf.split(',') if origin.strip()])
 
-# Database configuration: support DATABASE_URL (Neon PostgreSQL) with fallback to verified Neon DB
-DEFAULT_NEON_DB_URL = 'postgresql://user:password@localhost:5432/dbname'
-DATABASE_URL = os.environ.get('DATABASE_URL', DEFAULT_NEON_DB_URL)
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default=DATABASE_URL,
-        conn_max_age=0,  # 0 for serverless Lambdas (Vercel) to avoid connection leaks
-        conn_health_checks=False,
-        ssl_require=True
-    )
-}
+# Database configuration: loaded strictly from environment variable
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=0,  # 0 for serverless Lambdas (Vercel) to avoid connection leaks
+            conn_health_checks=False,
+            ssl_require=True
+        )
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Reverse proxy SSL header
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -57,18 +63,14 @@ STORAGES = {
 }
 WHITENOISE_MANIFEST_STRICT = False
 
-# Email settings
+# Email settings: strictly from environment variables
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ('true', '1', 'yes')
-
-_user = os.environ.get('EMAIL_HOST_USER', 'srinivasgovvala128@gmail.com')
-if _user and '128' not in _user and _user.startswith('srinivasgovvala'):
-    _user = 'srinivasgovvala128@gmail.com'
-EMAIL_HOST_USER = _user
-
-_raw_email_pwd = os.environ.get('EMAIL_HOST_PASSWORD', '[REDACTED_APP_PASSWORD]')
-EMAIL_HOST_PASSWORD = _raw_email_pwd.replace(' ', '') if _raw_email_pwd else '[REDACTED_APP_PASSWORD]'
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER or 'srinivasgovvala128@gmail.com')
-CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', 'srinivasgovvala128@gmail.com')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+_raw_pwd = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_HOST_PASSWORD = _raw_pwd.replace(' ', '') if _raw_pwd else ''
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER or 'noreply@nagasrinivas.dev')
+CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', EMAIL_HOST_USER or '')
+RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')

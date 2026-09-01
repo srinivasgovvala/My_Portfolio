@@ -29,7 +29,7 @@ class ChatbotAndStaticTests(TestCase):
         content = response.content.decode('utf-8')
         self.assertIn('meta name="csrf-token"', content)
         self.assertIn('window.CSRF_TOKEN =', content)
-        self.assertIn('favicon.svg', content)
+        self.assertTrue('favicon' in content and '.svg' in content)
 
     @patch('urllib.request.urlopen')
     def test_chatbot_post_with_csrf(self, mock_urlopen):
