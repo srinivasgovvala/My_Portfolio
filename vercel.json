@@ -6,7 +6,9 @@
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
-        "runtime": "python3.12"
+        "runtime": "python3.12",
+        "includeFiles": "templates/**",
+        "excludeFiles": "{media/**,static/**,staticfiles/**,images_gifs/**,*.pdf,*.html,*.md}"
       }
     },
     {
