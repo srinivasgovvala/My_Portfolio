@@ -3,7 +3,15 @@
   "builds": [
     {
       "src": "portfolio/wsgi.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": [
+          "templates/**",
+          "core/templates/**",
+          "projects/templates/**",
+          "**/*.html"
+        ]
+      }
     },
     {
       "src": "build_files.sh",

@@ -2,8 +2,10 @@ import os
 import sys
 import json
 import traceback
+from pathlib import Path
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.conf import settings
 from django.db import connection
 from .models import HeroRole
 from profile_app.models import Skill, Technology
@@ -45,7 +47,18 @@ def health_check(request):
         'has_database_url_env': bool(os.environ.get('DATABASE_URL')),
         'database_engine': connection.settings_dict.get('ENGINE', 'unknown'),
         'database_host': connection.settings_dict.get('HOST', 'unknown'),
+        'base_dir': str(settings.BASE_DIR),
+        'template_dirs': [str(d) for d in settings.TEMPLATES[0].get('DIRS', [])],
     }
+
+    # Inspect filesystem for templates
+    found_templates = []
+    for search_root in [settings.BASE_DIR, Path('/var/task')]:
+        if search_root.exists():
+            for p in search_root.rglob('*.html'):
+                if '.venv' not in str(p) and '__pycache__' not in str(p):
+                    found_templates.append(str(p))
+    report['found_html_files'] = found_templates
 
     # Test Database Query
     try:
