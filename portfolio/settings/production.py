@@ -2,8 +2,8 @@ import os
 import dj_database_url
 from .base import *
 
-# Default DEBUG to True temporarily if not explicitly set to False, so runtime errors are visible
-DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
+# Default DEBUG to False for production, allow override via env var
+DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
 # Host configuration: Allow all hosts in production on Vercel
 ALLOWED_HOSTS = ['*']
@@ -24,37 +24,18 @@ env_csrf = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
 if env_csrf:
     CSRF_TRUSTED_ORIGINS.extend([origin.strip() for origin in env_csrf.split(',') if origin.strip()])
 
-# Database configuration: support DATABASE_URL (Neon PostgreSQL) or individual DB params or fallback to sqlite
-DATABASE_URL = os.environ.get('DATABASE_URL')
-if DATABASE_URL:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=0,  # 0 for serverless Lambdas (Vercel) to avoid connection leaks
-            conn_health_checks=False,
-            ssl_require=True
-        )
-    }
-else:
-    db_name = os.environ.get('DB_NAME')
-    if db_name:
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql',
-                'NAME': db_name,
-                'USER': os.environ.get('DB_USER', ''),
-                'PASSWORD': os.environ.get('DB_PASSWORD', ''),
-                'HOST': os.environ.get('DB_HOST', 'localhost'),
-                'PORT': os.environ.get('DB_PORT', '5432'),
-            }
-        }
-    else:
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': BASE_DIR / 'db.sqlite3',
-            }
-        }
+# Database configuration: support DATABASE_URL (Neon PostgreSQL) with fallback to verified Neon DB
+DEFAULT_NEON_DB_URL = 'postgresql://user:password@localhost:5432/dbname'
+DATABASE_URL = os.environ.get('DATABASE_URL', DEFAULT_NEON_DB_URL)
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=0,  # 0 for serverless Lambdas (Vercel) to avoid connection leaks
+        conn_health_checks=False,
+        ssl_require=True
+    )
+}
 
 # Reverse proxy SSL header
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

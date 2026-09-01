@@ -3,13 +3,7 @@
   "builds": [
     {
       "src": "portfolio/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.12",
-        "includeFiles": "templates/**",
-        "excludeFiles": "{media/**,images_gifs/**,*.pdf}"
-      }
+      "use": "@vercel/python"
     },
     {
       "src": "build_files.sh",
