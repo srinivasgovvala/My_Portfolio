@@ -6,10 +6,11 @@
       "use": "@vercel/python",
       "config": {
         "includeFiles": [
+          "**/*.html",
           "templates/**",
           "core/templates/**",
-          "projects/templates/**",
-          "**/*.html"
+          "portfolio/templates/**",
+          "projects/templates/**"
         ]
       }
     },

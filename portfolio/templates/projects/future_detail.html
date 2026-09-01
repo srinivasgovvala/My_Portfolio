@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} — In Development | Nagasrinivas Govvala{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+<style>
+.future-construction {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.construction-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(88,28,220,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.blueprint-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(92,28,220,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92,28,220,0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: blueprint-scroll 20s linear infinite;
+}
+@keyframes blueprint-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(50px); }
+}
+.construction-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+.construction-icon {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  animation: construction-spin 8s linear infinite;
+  display: inline-block;
+}
+@keyframes construction-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.construction-log {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--purple-400);
+  margin: 2rem 0;
+  text-align: left;
+  background: rgba(10,10,18,0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  letter-spacing: 0.06em;
+}
+.log-line {
+  margin: 0.4rem 0;
+  opacity: 0;
+  animation: log-appear 0.5s ease forwards;
+}
+.log-line:nth-child(1) { animation-delay: 0.3s; }
+.log-line:nth-child(2) { animation-delay: 0.8s; }
+.log-line:nth-child(3) { animation-delay: 1.4s; }
+.log-line:nth-child(4) { animation-delay: 2.0s; }
+.log-line:nth-child(5) { animation-delay: 2.6s; }
+@keyframes log-appear {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.progress-bar-wrap {
+  margin: 1.5rem 0;
+  height: 3px;
+  background: rgba(139,92,246,0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple-600), var(--neon-cyan));
+  border-radius: 2px;
+  animation: scanning 2s ease-in-out infinite alternate;
+}
+@keyframes scanning {
+  from { width: 10%; margin-left: 0; }
+  to { width: 40%; margin-left: 60%; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="future-construction">
+  <div class="blueprint-lines" aria-hidden="true"></div>
+  <div class="construction-bg" aria-hidden="true"></div>
+
+  <div class="construction-content">
+    <div class="construction-icon" aria-hidden="true">◈</div>
+
+    <div style="display:flex;justify-content:center;margin-bottom:1rem;">
+      <span class="status-dev">{{ project.get_status_display }}</span>
+    </div>
+
+    <h1 style="font-size:clamp(1.8rem,5vw,3rem);margin-bottom:1rem;">{{ project.title }}</h1>
+    <p style="color:var(--purple-300);font-size:1rem;margin-bottom:0.75rem;font-style:italic;">{{ project.concept }}</p>
+    <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.7;margin-bottom:2rem;">{{ project.description }}</p>
+
+    <div class="construction-log" role="status" aria-label="Development status log">
+      <div class="log-line">▸ SYSTEM INITIALIZING...</div>
+      <div class="log-line">▸ ARCHITECTURE UNDER DEVELOPMENT...</div>
+      <div class="log-line">▸ MODULES BEING DESIGNED...</div>
+      <div class="log-line">▸ CORE SYSTEMS: RESEARCHING...</div>
+      <div class="log-line">▸ STATUS: COMING SOON</div>
+    </div>
+
+    <div class="progress-bar-wrap" aria-hidden="true">
+      <div class="progress-bar-fill"></div>
+    </div>
+
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:2rem;line-height:1.7;">
+      I'm currently developing this project.<br>Check back later.
+    </p>
+
+    {% if project.technologies_planned %}
+    <div style="margin-bottom:2rem;">
+      <p style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.75rem;text-transform:uppercase;">Planned Stack</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;">
+        {% for tech in project.get_technologies_list %}
+        <span class="tech-badge" style="opacity:0.6;">{{ tech }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <a href="/#projects" class="btn btn-outline">← Back to Projects</a>
+  </div>
+</section>
+{% endblock %}

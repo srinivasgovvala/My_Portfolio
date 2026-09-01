@@ -59,6 +59,14 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR / 'templates',
             BASE_DIR / 'core' / 'templates',
+            BASE_DIR / 'portfolio' / 'templates',
+            Path(__file__).resolve().parent.parent / 'templates',
+            Path('/var/task/templates'),
+            Path('/var/task/core/templates'),
+            Path('/var/task/portfolio/templates'),
+            Path.cwd() / 'templates',
+            Path.cwd() / 'core' / 'templates',
+            Path.cwd() / 'portfolio' / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

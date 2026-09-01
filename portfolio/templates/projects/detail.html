@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} | Nagasrinivas Govvala{% endblock %}
+{% block description %}{{ project.short_description }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Project hero -->
+<section class="project-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/#projects">Projects</a>
+      <span aria-hidden="true"> / </span>
+      <span>{{ project.title }}</span>
+    </nav>
+
+    <div class="project-hero-content">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;">
+        <span class="status-live">{{ project.category }}</span>
+        <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);letter-spacing:0.1em;">COMPLETED PROJECT</span>
+      </div>
+      <h1 style="font-size:clamp(2rem,6vw,4rem);margin-bottom:1rem;">{{ project.title }}</h1>
+      <p style="color:var(--text-secondary);font-size:1.1rem;max-width:650px;line-height:1.7;margin-bottom:2rem;">{{ project.short_description }}</p>
+
+      <div class="tech-badges" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2rem;">
+        {% for tech in project.technologies.all %}
+        <span class="tech-badge">{{ tech.name }}</span>
+        {% endfor %}
+      </div>
+
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+        {% if project.github_url %}
+        <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub →</a>
+        {% endif %}
+        {% if project.live_url %}
+        <a href="{{ project.live_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo →</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky project nav -->
+<nav class="project-sticky-nav" id="project-sticky-nav" aria-label="Project sections">
+  <div class="container" style="display:flex;gap:0.25rem;overflow-x:auto;padding-bottom:0.5rem;">
+    {% if project.problem %}<a href="#overview" class="project-nav-link">Overview</a>{% endif %}
+    {% if project.features %}<a href="#features" class="project-nav-link">Features</a>{% endif %}
+    {% if project.architecture %}<a href="#architecture" class="project-nav-link">Architecture</a>{% endif %}
+    {% if project.screenshots.exists %}<a href="#screenshots" class="project-nav-link">Screenshots</a>{% endif %}
+    {% if project.challenges %}<a href="#challenges" class="project-nav-link">Challenges</a>{% endif %}
+  </div>
+</nav>
+
+<!-- Project body -->
+<div class="project-body-layout container">
+  <article class="project-content">
+
+    {% if project.hover_gif or project.thumbnail %}
+    <div class="project-showcase" id="overview">
+      {% if project.hover_gif %}
+      <img src="{{ project.hover_gif.url }}" alt="{{ project.title }} demo" class="project-main-img" loading="lazy">
+      {% elif project.thumbnail %}
+      <img src="{{ project.thumbnail.url }}" alt="{{ project.title }} screenshot" class="project-main-img" loading="lazy">
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if project.problem %}
+    <section class="case-section">
+      <h2 class="case-section-title">The Problem</h2>
+      <p class="case-text">{{ project.problem }}</p>
+    </section>
+    {% endif %}
+
+    {% if project.solution %}
+    <section class="case-section">
+      <h2 class="case-section-title">The Solution</h2>
+      <p class="case-text">{{ project.solution }}</p>
+    </section>
+    {% endif %}
+
+    {% if project.features %}
+    <section class="case-section" id="features">
+      <h2 class="case-section-title">Key Features</h2>
+      <ul class="features-list">
+        {% for feature in project.features_list %}
+        <li>{{ feature }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if project.architecture %}
+    <section class="case-section" id="architecture">
+      <h2 class="case-section-title">Architecture</h2>
+      <div class="case-text">{{ project.architecture|linebreaksbr }}</div>
+    </section>
+    {% endif %}
+
+    {% if project.screenshots.exists %}
+    <section class="case-section" id="screenshots">
+      <h2 class="case-section-title">Screenshots</h2>
+      <div class="screenshots-grid">
+        {% for ss in project.screenshots.all %}
+        <figure class="screenshot-item">
+          <img src="{{ ss.image.url }}" alt="{{ ss.caption|default:project.title }}" loading="lazy">
+          {% if ss.caption %}<figcaption>{{ ss.caption }}</figcaption>{% endif %}
+        </figure>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if project.challenges %}
+    <section class="case-section" id="challenges">
+      <h2 class="case-section-title">Challenges</h2>
+      <p class="case-text">{{ project.challenges }}</p>
+    </section>
+    {% endif %}
+
+    {% if project.learning %}
+    <section class="case-section">
+      <h2 class="case-section-title">What I Learned</h2>
+      <p class="case-text">{{ project.learning }}</p>
+    </section>
+    {% endif %}
+
+    {% if project.result %}
+    <section class="case-section">
+      <h2 class="case-section-title">Result</h2>
+      <p class="case-text">{{ project.result }}</p>
+    </section>
+    {% endif %}
+
+    <div class="case-cta">
+      {% if project.github_url %}
+      <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View on GitHub →</a>
+      {% endif %}
+      {% if project.live_url %}
+      <a href="{{ project.live_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo →</a>
+      {% endif %}
+      <a href="/#projects" class="btn btn-ghost">← Back to Projects</a>
+    </div>
+  </article>
+
+  <!-- Sidebar -->
+  <aside class="project-sidebar">
+    <div class="glass-card" style="padding:1.5rem;margin-bottom:1.25rem;">
+      <h3 class="sidebar-title">Tech Stack</h3>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        {% for tech in project.technologies.all %}
+        <span style="font-size:0.875rem;color:var(--text-secondary);">{{ tech.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if related_projects %}
+    <div class="glass-card" style="padding:1.5rem;">
+      <h3 class="sidebar-title">Other Projects</h3>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        {% for rp in related_projects %}
+        <a href="{% url 'projects:detail' rp.slug %}" style="color:var(--text-secondary);font-size:0.875rem;transition:color 0.2s;">
+          {{ rp.title }} →
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </aside>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/project.js' %}"></script>
+{% endblock %}
