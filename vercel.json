@@ -8,7 +8,7 @@
         "maxLambdaSize": "15mb",
         "runtime": "python3.12",
         "includeFiles": "templates/**",
-        "excludeFiles": "{media/**,static/**,staticfiles/**,images_gifs/**,*.pdf,*.html,*.md}"
+        "excludeFiles": "{media/**,images_gifs/**,*.pdf}"
       }
     },
     {
