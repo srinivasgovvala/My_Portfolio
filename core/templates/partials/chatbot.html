@@ -1,0 +1,51 @@
+{% load static %}
+<!-- AI Chatbot Widget -->
+<div id="chatbot-container" aria-live="polite" aria-label="AI Assistant">
+  <!-- Floating button -->
+  <button id="chatbot-toggle" class="chatbot-fab" aria-label="Open AI assistant — Ask Srinivas AI" aria-expanded="false">
+    <span class="chatbot-fab-icon">◈</span>
+    <span class="chatbot-fab-label">Ask Srinivas AI</span>
+  </button>
+
+  <!-- Chat panel -->
+  <div id="chatbot-panel" class="chatbot-panel" role="dialog" aria-modal="true" aria-label="Ask Srinivas AI" hidden>
+    <div class="chatbot-header">
+      <div class="chatbot-identity">
+        <div class="chatbot-avatar">◈</div>
+        <div>
+          <div class="chatbot-name">Srinivas AI</div>
+          <div class="chatbot-status">Portfolio Intelligence Active</div>
+        </div>
+      </div>
+      <button class="chatbot-close" id="chatbot-close" aria-label="Close AI assistant">✕</button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbot-messages" role="log" aria-live="polite">
+      <div class="chat-msg ai">
+        <div class="chat-bubble">Hi. I'm Srinivas AI. Ask me about Nagasrinivas's projects, skills, education, technologies or development work.</div>
+      </div>
+      <div class="chat-suggestions">
+        <button class="suggestion-chip" data-msg="What projects has Nagasrinivas built?">Projects built</button>
+        <button class="suggestion-chip" data-msg="What technologies does he use?">Tech stack</button>
+        <button class="suggestion-chip" data-msg="Tell me about ResumeAI">ResumeAI</button>
+        <button class="suggestion-chip" data-msg="What is his educational background?">Education</button>
+      </div>
+    </div>
+
+    <form class="chatbot-input-area" id="chatbot-form" autocomplete="off">
+      {% csrf_token %}
+      <input
+        type="text"
+        id="chatbot-input"
+        class="chatbot-input"
+        placeholder="Ask about Nagasrinivas..."
+        maxlength="500"
+        aria-label="Your question"
+        autocomplete="off"
+      >
+      <button type="submit" class="chatbot-send" aria-label="Send message">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>

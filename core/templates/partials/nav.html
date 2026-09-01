@@ -1,0 +1,40 @@
+{% load static %}
+<nav id="main-nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Nagasrinivas Govvala — Home">{{ site.logo_text|default:"NG." }}</a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#skills">Skills</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/#future">Future</a></li>
+        <li><a href="/#education">Education</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="music-toggle" id="musicToggleNav" aria-label="Toggle ambient music" title="Toggle music">
+          ♪
+        </button>
+        <button class="ai-toggle" id="aiToggleNav" aria-label="Open AI assistant">
+          AI
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+  <a href="/#about" class="mobile-nav-link">About</a>
+  <a href="/#skills" class="mobile-nav-link">Skills</a>
+  <a href="/#projects" class="mobile-nav-link">Projects</a>
+  <a href="/#future" class="mobile-nav-link">Future</a>
+  <a href="/#education" class="mobile-nav-link">Education</a>
+  <a href="/#contact" class="mobile-nav-link">Contact</a>
+</div>
