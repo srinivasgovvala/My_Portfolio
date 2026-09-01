@@ -116,7 +116,7 @@ OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions'
 
 GITHUB_URL = env('GITHUB_URL', 'https://github.com/NagasrinivasGovvala')
 LINKEDIN_URL = env('LINKEDIN_URL', 'https://linkedin.com/in/nagasrinivas-govvala')
-CONTACT_EMAIL = env('CONTACT_EMAIL', 'nagasrinivas@email.com')
+CONTACT_EMAIL = env('CONTACT_EMAIL', 'srinivasgovvala128@gmail.com')
 
 CHATBOT_RATE_LIMIT = 20  # requests per hour per IP
 CONTACT_RATE_LIMIT = 5   # submissions per hour per IP
