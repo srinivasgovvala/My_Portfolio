@@ -32,9 +32,7 @@
 
     <div class="hero-cta reveal reveal-delay-3">
       <a href="#projects" class="btn btn-primary">Explore My Work</a>
-      {% if profile.resume %}
-      <a href="{{ profile.resume.url }}" class="btn btn-outline" download aria-label="Download resume PDF">Download Resume</a>
-      {% endif %}
+      <a href="{% url 'core:download_resume' %}" class="btn btn-outline" download="Nagasrinivas_Govvala_Resume.pdf" aria-label="Download resume PDF" target="_blank">Download Resume</a>
     </div>
 
     <div class="hero-links reveal reveal-delay-4">

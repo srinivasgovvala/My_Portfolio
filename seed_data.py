@@ -38,6 +38,7 @@ I build with Python and Django as my primary stack, experiment with machine lear
 
 My approach: build and learn by shipping real projects. Every project in this portfolio was built to work, not just to demonstrate skills."""
     p.available_for_work = True
+    p.resume = 'resume/resume.pdf'
     p.save()
 
     # SEO

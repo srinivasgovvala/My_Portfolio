@@ -4,7 +4,7 @@ import json
 import traceback
 from pathlib import Path
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, FileResponse, Http404
 from django.conf import settings
 from django.db import connection
 from .models import HeroRole
@@ -91,3 +91,51 @@ Disallow: /admin/
 Sitemap: {scheme}://{host}/sitemap.xml
 """.format(scheme=request.scheme, host=request.get_host())
     return HttpResponse(content, content_type='text/plain')
+
+
+def download_resume(request):
+    """Serve the resume PDF with explicit application/pdf headers and filename."""
+    candidate_paths = [
+        settings.MEDIA_ROOT / 'resume' / 'resume.pdf',
+        settings.STATIC_ROOT / 'resume' / 'resume.pdf',
+        settings.STATIC_ROOT / 'static' / 'resume' / 'resume.pdf',
+        settings.STATIC_ROOT / 'media' / 'resume' / 'resume.pdf',
+        settings.BASE_DIR / 'media' / 'resume' / 'resume.pdf',
+        settings.BASE_DIR / 'static' / 'resume' / 'resume.pdf',
+        Path('/var/task/media/resume/resume.pdf'),
+        Path('/var/task/static/resume/resume.pdf'),
+        Path('/var/task/staticfiles/media/resume/resume.pdf'),
+        Path('/var/task/staticfiles/static/resume/resume.pdf'),
+        Path('media/resume/resume.pdf'),
+        Path('static/resume/resume.pdf'),
+    ]
+
+    resume_path = None
+    for p in candidate_paths:
+        try:
+            target = Path(p)
+            if target.is_file() and target.stat().st_size > 0:
+                resume_path = target
+                break
+        except Exception:
+            continue
+
+    if not resume_path:
+        try:
+            from .models import PersonalProfile
+            profile = PersonalProfile.get()
+            if profile.resume:
+                target = Path(profile.resume.path)
+                if target.is_file() and target.stat().st_size > 0:
+                    resume_path = target
+        except Exception:
+            pass
+
+    if not resume_path:
+        raise Http404("Resume not found")
+
+    disposition = 'inline' if request.GET.get('view') == '1' else 'attachment'
+    response = FileResponse(open(resume_path, 'rb'), content_type='application/pdf')
+    response['Content-Disposition'] = f'{disposition}; filename="Nagasrinivas_Govvala_Resume.pdf"'
+    response['Cache-Control'] = 'public, max-age=3600'
+    return response

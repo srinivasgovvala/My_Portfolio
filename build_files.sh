@@ -27,6 +27,18 @@ if [ -d "media" ]; then
     cp -r media/* staticfiles/media/ 2>/dev/null || true
 fi
 
+# Guarantee resume PDF is in place across all static/media paths for CDN delivery
+mkdir -p staticfiles/media/resume staticfiles/static/resume staticfiles/resume
+if [ -f "media/resume/resume.pdf" ]; then
+    cp "media/resume/resume.pdf" "staticfiles/media/resume/resume.pdf" 2>/dev/null || true
+    cp "media/resume/resume.pdf" "staticfiles/static/resume/resume.pdf" 2>/dev/null || true
+    cp "media/resume/resume.pdf" "staticfiles/resume/resume.pdf" 2>/dev/null || true
+elif [ -f "static/resume/resume.pdf" ]; then
+    cp "static/resume/resume.pdf" "staticfiles/media/resume/resume.pdf" 2>/dev/null || true
+    cp "static/resume/resume.pdf" "staticfiles/static/resume/resume.pdf" 2>/dev/null || true
+    cp "static/resume/resume.pdf" "staticfiles/resume/resume.pdf" 2>/dev/null || true
+fi
+
 echo "=== [5/5] Verifying Output Directory ==="
 ls -la staticfiles/ || true
 

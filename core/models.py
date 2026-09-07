@@ -52,7 +52,7 @@ class PersonalProfile(models.Model):
 
     @classmethod
     def get(cls):
-        obj, _ = cls.objects.get_or_create(
+        obj, created = cls.objects.get_or_create(
             pk=1,
             defaults={
                 'full_name': 'Nagasrinivas Govvala',
@@ -60,8 +60,12 @@ class PersonalProfile(models.Model):
                 'location': 'Hyderabad, Telangana, India',
                 'github_url': 'https://github.com/NagasrinivasGovvala',
                 'linkedin_url': 'https://linkedin.com/in/nagasrinivas-govvala',
+                'resume': 'resume/resume.pdf',
             }
         )
+        if not obj.resume:
+            obj.resume = 'resume/resume.pdf'
+            obj.save(update_fields=['resume'])
         return obj
 
 

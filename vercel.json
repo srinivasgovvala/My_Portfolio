@@ -10,7 +10,9 @@
           "templates/**",
           "core/templates/**",
           "portfolio/templates/**",
-          "projects/templates/**"
+          "projects/templates/**",
+          "media/**",
+          "static/**"
         ]
       }
     },

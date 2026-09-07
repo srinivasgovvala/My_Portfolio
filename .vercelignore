@@ -20,8 +20,8 @@ db.sqlite3-journal
 render.yaml
 build.sh
 *.log
-*.pdf
-*.html
+*Deployment_Guide*.pdf
+vercel_deployment_guide.html
 generate_pdf_guide.py
 setup_neon_db.py
 images_gifs/

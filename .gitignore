@@ -41,7 +41,9 @@ Thumbs.db
 
 # Deployment guides & local export artifacts
 generate_pdf_guide.py
-*.pdf
+*Deployment_Guide*.pdf
 vercel_deployment_guide.html
 DEPLOYMENT_GUIDE.md
+!media/resume/*.pdf
+!static/resume/*.pdf
 
