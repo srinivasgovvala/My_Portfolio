@@ -38,3 +38,10 @@ staticfiles/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Deployment guides & local export artifacts
+generate_pdf_guide.py
+*.pdf
+vercel_deployment_guide.html
+DEPLOYMENT_GUIDE.md
+

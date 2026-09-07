@@ -71,6 +71,6 @@ EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ('true', '1',
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 _raw_pwd = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_HOST_PASSWORD = _raw_pwd.replace(' ', '') if _raw_pwd else ''
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER or 'noreply@nagasrinivas.dev')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER or '')
 CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', EMAIL_HOST_USER or '')
 RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
