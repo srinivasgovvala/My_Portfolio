@@ -1,3 +1,4 @@
+import os
 from django.db import models
 
 
@@ -36,7 +37,10 @@ class PersonalProfile(models.Model):
     about_short = models.TextField(default='A fresher software developer who builds real applications.')
     about_long = models.TextField(default='')
     profile_image = models.ImageField(upload_to='profile/', blank=True, null=True)
-    resume = models.FileField(upload_to='resume/', blank=True, null=True)
+    resume = models.FileField(upload_to='resume/', blank=True, null=True, help_text="Upload a resume file (PDF recommended).")
+    resume_file_data = models.BinaryField(blank=True, null=True, editable=False)
+    resume_filename = models.CharField(max_length=255, default='Nagasrinivas_Govvala_Resume.pdf', blank=True)
+    resume_external_url = models.URLField(blank=True, help_text="Optional external link (e.g. Google Drive, S3, Dropbox). If set, this URL is used for download.")
     available_for_work = models.BooleanField(default=True)
 
     class Meta:
@@ -48,6 +52,22 @@ class PersonalProfile(models.Model):
 
     def save(self, *args, **kwargs):
         self.pk = 1
+        if self.resume:
+            try:
+                # Capture file content into database binary field for persistent storage across serverless restarts
+                from django.core.files.uploadedfile import UploadedFile
+                f = getattr(self.resume, 'file', None)
+                if f and (isinstance(f, UploadedFile) or not self.resume_file_data):
+                    if hasattr(f, 'read'):
+                        content = f.read()
+                        if content:
+                            self.resume_file_data = content
+                            if self.resume.name:
+                                self.resume_filename = os.path.basename(self.resume.name)
+                        if hasattr(f, 'seek'):
+                            f.seek(0)
+            except Exception:
+                pass
         super().save(*args, **kwargs)
 
     @classmethod

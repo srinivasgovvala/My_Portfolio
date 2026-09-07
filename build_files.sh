@@ -10,6 +10,9 @@ echo "=== [2/5] Installing Python Dependencies ==="
 python3 -m pip install --upgrade pip setuptools wheel --break-system-packages 2>/dev/null || python3 -m pip install --upgrade pip || true
 python3 -m pip install -r requirements.txt --break-system-packages 2>/dev/null || python3 -m pip install -r requirements.txt || pip install -r requirements.txt
 
+echo "=== [2.5/5] Applying Database Migrations ==="
+python3 manage.py migrate --no-input 2>&1 || python manage.py migrate --no-input 2>&1 || true
+
 echo "=== [3/5] Collecting Django Static Files ==="
 python3 manage.py collectstatic --no-input --clear 2>&1 || python manage.py collectstatic --no-input --clear 2>&1 || true
 

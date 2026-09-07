@@ -63,6 +63,15 @@ STORAGES = {
 }
 WHITENOISE_MANIFEST_STRICT = False
 
+# Writable media directory for serverless environments (e.g. Vercel)
+if os.environ.get('VERCEL') or os.environ.get('AWS_LAMBDA_FUNCTION_NAME'):
+    from pathlib import Path
+    MEDIA_ROOT = Path('/tmp/media')
+    try:
+        MEDIA_ROOT.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        pass
+
 # Email settings: strictly from environment variables
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')

@@ -3,7 +3,7 @@ import sys
 import json
 import traceback
 from pathlib import Path
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, FileResponse, Http404
 from django.conf import settings
 from django.db import connection
@@ -95,6 +95,34 @@ Sitemap: {scheme}://{host}/sitemap.xml
 
 def download_resume(request):
     """Serve the resume PDF with explicit application/pdf headers and filename."""
+    disposition = 'inline' if request.GET.get('view') == '1' else 'attachment'
+
+    # 1. Check if PersonalProfile has an external resume URL or database-stored file
+    try:
+        from .models import PersonalProfile
+        profile = PersonalProfile.get()
+        if profile.resume_external_url:
+            return redirect(profile.resume_external_url)
+
+        if profile.resume_file_data:
+            filename = profile.resume_filename or 'Nagasrinivas_Govvala_Resume.pdf'
+            response = HttpResponse(bytes(profile.resume_file_data), content_type='application/pdf')
+            response['Content-Disposition'] = f'{disposition}; filename="{filename}"'
+            response['Cache-Control'] = 'public, max-age=3600'
+            return response
+
+        if profile.resume:
+            target = Path(profile.resume.path)
+            if target.is_file() and target.stat().st_size > 0:
+                filename = profile.resume_filename or os.path.basename(target.name)
+                response = FileResponse(open(target, 'rb'), content_type='application/pdf')
+                response['Content-Disposition'] = f'{disposition}; filename="{filename}"'
+                response['Cache-Control'] = 'public, max-age=3600'
+                return response
+    except Exception:
+        pass
+
+    # 2. Check candidate paths on disk
     candidate_paths = [
         settings.MEDIA_ROOT / 'resume' / 'resume.pdf',
         settings.STATIC_ROOT / 'resume' / 'resume.pdf',
@@ -121,20 +149,8 @@ def download_resume(request):
             continue
 
     if not resume_path:
-        try:
-            from .models import PersonalProfile
-            profile = PersonalProfile.get()
-            if profile.resume:
-                target = Path(profile.resume.path)
-                if target.is_file() and target.stat().st_size > 0:
-                    resume_path = target
-        except Exception:
-            pass
-
-    if not resume_path:
         raise Http404("Resume not found")
 
-    disposition = 'inline' if request.GET.get('view') == '1' else 'attachment'
     response = FileResponse(open(resume_path, 'rb'), content_type='application/pdf')
     response['Content-Disposition'] = f'{disposition}; filename="Nagasrinivas_Govvala_Resume.pdf"'
     response['Cache-Control'] = 'public, max-age=3600'
