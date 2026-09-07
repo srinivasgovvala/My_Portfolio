@@ -81,6 +81,15 @@ def health_check(request):
         if 'traceback' not in report:
             report['traceback'] = traceback.format_exc()
 
+    # Opportunistic auto-cleanup of messages older than 30 days
+    try:
+        from contact.models import ContactMessage
+        from chatbot.models import ChatMessage
+        ContactMessage.prune_old_messages(days=30)
+        ChatMessage.prune_old_messages(days=30)
+    except Exception:
+        pass
+
     return JsonResponse(report, json_dumps_params={'indent': 2})
 
 
